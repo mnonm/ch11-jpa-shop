@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -23,6 +24,7 @@ public class Member {
 	@Column(name = "member_id")
 	private Long id;
 
+	@Setter
 	@Column(name = "name")
 	private String name;
 
