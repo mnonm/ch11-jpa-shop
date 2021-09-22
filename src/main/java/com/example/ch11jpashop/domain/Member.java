@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 @Table(name = "MEMBER")
@@ -24,7 +25,6 @@ public class Member {
 	@Column(name = "member_id")
 	private Long id;
 
-	@Setter
 	@Column(name = "name")
 	private String name;
 

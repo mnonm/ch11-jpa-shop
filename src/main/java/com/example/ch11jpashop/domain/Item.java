@@ -13,7 +13,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

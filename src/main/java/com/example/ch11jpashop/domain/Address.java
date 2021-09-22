@@ -3,6 +3,11 @@ package com.example.ch11jpashop.domain;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class Address {
 	@Column(name = "city")

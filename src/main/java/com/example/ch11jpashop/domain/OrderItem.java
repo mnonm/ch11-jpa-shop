@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 @Table(name = "order_item")
@@ -25,7 +26,6 @@ public class OrderItem {
 	@JoinColumn(name = "item_id")
 	private Item item;
 
-	@Setter
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")
 	private Order order;
@@ -36,4 +36,21 @@ public class OrderItem {
 	@Column(name = "count")
 	private int count;
 
+	public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+		OrderItem orderItem = new OrderItem();
+		orderItem.setItem(item);
+		orderItem.setOrderPrice(orderPrice);
+		orderItem.setCount(count);
+
+		item.removeStock(count);
+		return orderItem;
+	}
+
+	public void cancel() {
+		getItem().addStock(count);
+	}
+
+	public int getTotalPrice() {
+		return getOrderPrice() * getCount();
+	}
 }
