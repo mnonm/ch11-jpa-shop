@@ -19,3 +19,7 @@ spring:
   logging:
     level: trace
 
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
