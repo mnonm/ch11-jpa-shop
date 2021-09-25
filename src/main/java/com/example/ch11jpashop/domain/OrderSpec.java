@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 public class OrderSpec {
 	public static Specification<Order> memberNameLike(final String memberName) {
 		return (root, query, builder) -> {
-			if (StringUtils.hasText(memberName)) {
+			if (!StringUtils.hasText(memberName)) {
 				return null;
 			}
 			Join<Order, Member> m = root.join("member", JoinType.INNER);
