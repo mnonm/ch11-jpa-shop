@@ -26,7 +26,7 @@ public class OrderService {
 	private final ItemService itemService;
 
 	public Long order(Long memberId, Long itemId, int count) {
-		Member member = memberRepository.findOne(memberId);
+		Member member = memberRepository.findById(memberId).get();
 		Item item = itemService.findOne(itemId);
 
 		Delivery delivery = new Delivery(member.getAddress());
@@ -38,11 +38,11 @@ public class OrderService {
 	}
 
 	public void cancelOrder(Long orderId) {
-		Order order = orderRepository.findOne(orderId);
+		Order order = orderRepository.findById(orderId).get();
 		order.cancel();
 	}
 
 	public List<Order> findOrders(OrderSearch orderSearch) {
-		return orderRepository.findAll(orderSearch);
+		return orderRepository.findAll(orderSearch.toSpecification());
 	}
 }
